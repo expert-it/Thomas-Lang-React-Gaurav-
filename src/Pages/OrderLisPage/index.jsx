@@ -34,6 +34,7 @@ import {
   Tfoot,
   Checkbox,
   CheckboxGroup,
+  Image,
 } from '@chakra-ui/react';
 import {
   PhoneIcon,
@@ -42,7 +43,9 @@ import {
   ChevronDownIcon,
   CheckCircleIcon,
   CloseIcon,
+  BellIcon,
 } from '@chakra-ui/icons';
+import { Link } from 'react-router-dom';
 
 const index = () => {
   return (
@@ -68,13 +71,17 @@ const index = () => {
         </Box>
         <Divider />
         <Tabs>
+        <Box className='bell-icon-main'>
           <TabList className="tabs-main-list">
             <Tab>Orders</Tab>
             <Tab>Products</Tab>
             <Tab>Settings</Tab>
           </TabList>
-
-          <TabPanels>
+          <Box className='bell-icon'>
+         <BellIcon/>
+        </Box>
+        </Box>
+          <TabPanels className='tabs-content'>
             <TabPanel>
               <Box>
                 <Heading as="h6" size="xs">
@@ -82,22 +89,37 @@ const index = () => {
                 </Heading>{' '}
                 <Box className="main-tabs-box">
                   <Box className="box-text" maxW="32rem" bg="#0000">
+                    <Box className='text-order-box'>
                     <Heading mb={4}>
-                      Modern online and offline payments for Africa
+                     Total Orders Processed
                     </Heading>
                     <Text fontSize="xl">402</Text>
+                    </Box>
+                    <Box boxSize='sm' className='image-order-bx'>
+                    <Image src='../images/graph-blue.png' />
+                    </Box>
                   </Box>
                   <Box className="box-text" maxW="32rem" bg="#0000">
+                    <Box className='text-order-box'>
                     <Heading mb={4}>
-                      Modern online and offline payments for Africa
+                     Orders Processed Today
                     </Heading>
-                    <Text fontSize="xl">402</Text>
+                    <Text fontSize="xl">1</Text>
+                    </Box>
+                    <Box boxSize='sm' className='image-order-bx'>
+                    <Image src='../images/graph-yellow.png' />
+                    </Box>
                   </Box>
                   <Box className="box-text" maxW="32rem" bg="#0000">
+                    <Box className='text-order-box'>
                     <Heading mb={4}>
-                      Modern online and offline payments for Africa
+                     Last Order Received
                     </Heading>
-                    <Text fontSize="xl">402</Text>
+                    <Text fontSize="xl">Wed 28-09-2022 18:15</Text>
+                    </Box>
+                    <Box boxSize='sm' className='image-order-bx'>
+                    <Image src='../images/graph-green.png' />
+                    </Box>
                   </Box>
                 </Box>
               </Box>
@@ -142,12 +164,12 @@ const index = () => {
           <Tabs>
             <TabList className="tabs-table-list">
               <Tab>
-                Orders <span className="bubble-table">0</span>
+                Pending orders <span className="bubble-table">0</span>
               </Tab>
-              <Tab>Products</Tab>
-              <Tab>Settings</Tab>
-              <Tab>Settings</Tab>
-              <Tab>Settings</Tab>
+              <Tab>Imported orders</Tab>
+              <Tab>Failed import</Tab>
+              <Tab>All</Tab>
+              <Tab>Archived orders</Tab>
             </TabList>
 
             <TabPanels>
@@ -158,32 +180,34 @@ const index = () => {
                     <Thead>
                       <Tr>
                         <Th></Th>
-                        <Th>To convert</Th>
-                        <Th>into</Th>
-                        <Th isNumeric>multiply by</Th>
-                        <Th>To convert</Th>
-                        <Th>into</Th>
-                        <Th isNumeric>multiply by</Th>
-                        <Th>To convert</Th>
-                        <Th>into</Th>
+                        <Th>Order Number</Th>
+                        <Th>Sales Channel</Th>
+                        <Th isNumeric>Type</Th>
+                        <Th>Order Date</Th>
+                        <Th>Shipping Name</Th>
+                        <Th isNumeric>Imported in Shopify</Th>
+                        <Th>Tracking Synced</Th>
+                        <Th>Order Total</Th>
                       </Tr>
                     </Thead>
-                    <Tbody>
+                    <Tbody className='data-table'>
                       <Tr>
                         <Td>
                           <Checkbox></Checkbox>
                         </Td>
                         <Td>
-                          <a href="#">40-12121231242</a>
+                          <Link to="/orderdetail">402-6060100-6507523</Link>
                         </Td>
                         <Td>
-                          <span className="second-bg">millimetres (mm)</span>
+                        <Box className='main-bubble'>
+                          <span className="second-bg">Amazon IT</span>
+                          </Box>
                         </Td>
                         <Td>
                           {' '}
-                          <span className="third-bg"> isNumeric 0.91444</span>
+                          <span className="third-bg">FBS</span>
                         </Td>
-                        <Td isNumeric>25.4</Td>
+                        <Td isNumeric>Wed 28-09-2022 17:35</Td>
                         <Td isNumeric>25.4</Td>
                         <Td>
                           <CheckCircleIcon />
@@ -191,23 +215,25 @@ const index = () => {
                         <Td>
                           <CloseIcon className="cros-icon-table" />
                         </Td>
-                        <Td isNumeric>25.4</Td>
+                        <Td isNumeric>$25.48</Td>
                       </Tr>
                       <Tr>
                         <Td>
                           <Checkbox></Checkbox>
                         </Td>
                         <Td>
-                          <a href="#">40-12121231242</a>
+                          <Link to="/orderdetail">402-6701396-9261153</Link>
                         </Td>
                         <Td>
-                          <span className="second-bg">centimetres (cm)</span>
+                        <Box className='main-bubble'>
+                          <span className="second-bg">Amazon FR</span>
+                          </Box>
                         </Td>
                         <Td>
                           {' '}
-                          <span className="third-bg"> isNumeric 0.91444</span>
+                          <span className="third-bg">FBS</span>
                         </Td>
-                        <Td isNumeric>25.4</Td>
+                        <Td isNumeric>Tues 13-09-2022 17:52</Td>
                         <Td isNumeric>25.4</Td>
                         <Td>
                           <CheckCircleIcon />
@@ -215,47 +241,51 @@ const index = () => {
                         <Td>
                           <CheckCircleIcon />
                         </Td>
-                        <Td isNumeric>25.4</Td>
+                        <Td isNumeric>$21.89</Td>
                       </Tr>
                       <Tr>
                         <Td>
                           <Checkbox></Checkbox>
                         </Td>
                         <Td>
-                          <a href="#">40-12121231242</a>
+                          <Link to="/orderdetail">171-4653114-9802763</Link>
                         </Td>
                         <Td>
-                          <span className="second-bg">centimetres (cm)</span>
+                        <Box className='main-bubble'>
+                        <span className="second-bg">Amazon FR</span>
+                        </Box>
                         </Td>
                         <Td>
                           {' '}
-                          <span className="third-bg"> isNumeric 0.91444</span>
+                          <span className="third-bg">FBS</span>
                         </Td>
-                        <Td isNumeric>0.91444</Td>
-                        <Td isNumeric>0.91444</Td>
+                        <Td isNumeric>Mon 12-09-2022 13:41</Td>
+                        <Td isNumeric>25.4</Td>
                         <Td>
                           <CheckCircleIcon />
                         </Td>
                         <Td>
                           <CheckCircleIcon />
                         </Td>
-                        <Td isNumeric>0.91444</Td>
+                        <Td isNumeric>$21.89</Td>
                       </Tr>
                       <Tr>
                         <Td>
                           <Checkbox></Checkbox>
                         </Td>
                         <Td>
-                          <a href="#">40-12121231242</a>
+                          <Link to="/orderdetail">171-6638920-2497115</Link>
                         </Td>
                         <Td>
-                          <span className="second-bg">centimetres (cm)</span>
+                        <Box className='main-bubble'>
+                        <span className="second-bg">Amazon IT</span>
+                        </Box>
                         </Td>
                         <Td>
                           {' '}
-                          <span className="third-bg"> isNumeric 0.91444</span>
+                          <span className="third-bg">FBS</span>
                         </Td>
-                        <Td isNumeric>0.91444</Td>
+                        <Td isNumeric>Thu 01-09-2022 06:33</Td>
                         <Td isNumeric>0.91444</Td>
                         <Td>
                           <CheckCircleIcon />
@@ -263,23 +293,25 @@ const index = () => {
                         <Td>
                           <CheckCircleIcon />
                         </Td>
-                        <Td isNumeric>0.91444</Td>
+                        <Td isNumeric>$63.70</Td>
                       </Tr>
                       <Tr>
                         <Td>
                           <Checkbox></Checkbox>
                         </Td>
                         <Td>
-                          <a href="#">40-12121231242</a>
+                          <Link to="/orderdetail">1394274628</Link>
                         </Td>
                         <Td>
-                          <span className="second-bg">centimetres (cm)</span>
+                          <Box className='main-bubble'>
+                          <span className="second-bg">Bol.com</span>
+                          </Box>
                         </Td>
                         <Td>
                           {' '}
-                          <span className="third-bg"> isNumeric 0.91444</span>
+                          <span className="third-bg"> FBS</span>
                         </Td>
-                        <Td isNumeric>0.91444</Td>
+                        <Td isNumeric>Tue 30-08-2022 14:01</Td>
                         <Td isNumeric>0.91444</Td>
                         <Td>
                           <CheckCircleIcon />
@@ -287,31 +319,11 @@ const index = () => {
                         <Td>
                           <CheckCircleIcon />
                         </Td>
-                        <Td isNumeric>0.91444</Td>
+                        <Td isNumeric>$9.75</Td>
                       </Tr>
                     </Tbody>
                   </Table>
                 </TableContainer>
-              </TabPanel>
-              <TabPanel>
-                <Heading as="h6" size="xs">
-                  Settings{' '}
-                </Heading>{' '}
-              </TabPanel>
-              <TabPanel>
-                <Heading as="h6" size="xs">
-                  Settings{' '}
-                </Heading>{' '}
-              </TabPanel>
-              <TabPanel>
-                <Heading as="h6" size="xs">
-                  Settings{' '}
-                </Heading>{' '}
-              </TabPanel>
-              <TabPanel>
-                <Heading as="h6" size="xs">
-                  Settings{' '}
-                </Heading>{' '}
               </TabPanel>
             </TabPanels>
           </Tabs>
